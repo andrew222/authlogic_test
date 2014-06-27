@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   acts_as_authentic do |c|
   	c.login_field = 'email'
   end
+
+  validates :name, presence: true
+  validates :name, uniqueness: true
+
   def self.find_by_username(login)
     User.find_by_name(login)
   end

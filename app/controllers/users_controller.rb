@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         if @user.save
           redirect_to welcome_path
         else
-          render_to "new"
+          render "new"
         end
       end
     end
