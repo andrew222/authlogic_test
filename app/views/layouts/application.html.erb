@@ -10,5 +10,20 @@
 
 <%= yield %>
 
+<script>
+  $(document).ready(function(){
+    setInterval(check_session, 10*1000);
+  })
+  function check_session(){
+    $.ajax({
+      type: "GET",
+      url: "/check_session",
+      data: {},
+      success: function(data){
+        console.log(data);
+      }
+    })
+  }
+</script>
 </body>
 </html>

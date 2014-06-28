@@ -28,6 +28,11 @@ gem 'authlogic'
 gem 'scrypt'
 gem 'haml-rails'
 gem 'simple_form'
+group :development do
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'debugger'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

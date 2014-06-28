@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :crypted_password, :email, :name, :password_salt, :persistence_token, :password_confirmation, :password
   acts_as_authentic do |c|
-  	c.login_field = 'email'
+    c.logged_in_timeout(15.minutes)
   end
 
   validates :name, presence: true

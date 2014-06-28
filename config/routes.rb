@@ -9,6 +9,7 @@ AuthlogicTest::Application.routes.draw do
   match "/login" => "user_sessions#new", :as => "login"
   match "/sign_up" => "users#new", :as => "signup"
   match "/logout" => "user_sessions#destroy", :as => "logout"
+  match "/check_session" => "user_sessions#check_session", :as => "check_session"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
