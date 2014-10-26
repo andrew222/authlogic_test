@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   
   def require_user
-    unless current_user
+    unless current_user && current_user.active?
       respond_to do |format|
         format.html do 
           flash[:notice] = "Please login first"

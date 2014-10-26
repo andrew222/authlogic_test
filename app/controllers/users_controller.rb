@@ -8,7 +8,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html do
         if @user.save
-          redirect_to welcome_path
+          flash[:notice] = "Please check our email to active you account."
+          Notifier.activity_email(@user).deliver
+          current_user_session.destroy
+          redirect_to root_path
         else
           render "new"
         end
@@ -23,5 +26,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+  def account_activity
+      @user = User.find_by_persistence_token(params[:id])
+      unless @user.blank?
+          @user.update_attribute("active", true)
+          flash[:notice] = "Your account is activity."
+          redirect_to welcome_path
+      else
+          flash[:error] = "The token is invalid."
+          redirect_to root_path
+      end
   end
 end

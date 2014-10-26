@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def self.find_by_username(login)
     User.find_by_name(login)
   end
+  
+  def active?
+      active
+  end
 end

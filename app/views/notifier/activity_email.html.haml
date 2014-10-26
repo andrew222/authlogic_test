@@ -1,2 +1,3 @@
 %h2= "Welcome #{@user.name}"
 %div= "please check this link to active you account."
+%span= account_activity_url(@user.persistence_token)
